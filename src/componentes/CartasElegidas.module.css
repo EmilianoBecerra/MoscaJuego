@@ -1,0 +1,15 @@
+
+.cartasElegidas {
+    display: flex;
+    flex-flow: row nowrpa;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.zonaCartas {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}

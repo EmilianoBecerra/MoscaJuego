@@ -1,0 +1,19 @@
+.start {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .start button {
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  hr {
+    width: 100%;
+    margin: 0px 10px;
+  }
