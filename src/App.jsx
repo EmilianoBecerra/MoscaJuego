@@ -1,18 +1,22 @@
-import Board from "./componentes/Boards"
+import Board from "./componentes/Boards";
+import Jugadores from "./componentes/Jugadores";
+import { GameProvider } from "./GameContext";
 import styles from "./App.module.css";
-import { Fragment, useState } from "react";
-import Player from "./componentes/Jugadores";
-import mazo from "./utils/mazo";
+import InfoJuego from "./componentes/InfoJuego";
 
 const App = () => {
-  const [triunfo, setTriunfo] = useState({});
   return (
-    <main >
-      <Player triunfo={triunfo}/>
-      <Board setTriunfo={setTriunfo}/>
-    </main>
-  )
-}
-
+    <GameProvider>
+      <main className={styles.main}>
+        <InfoJuego/>
+        <div className={styles.tablero}>
+          <Jugadores jugador={"Jugador 1"}/>
+          <Board />
+          <Jugadores jugador={"Jugador 2"} />
+        </div>
+      </main>
+    </GameProvider>
+  );
+};
 
 export default App;

@@ -1,35 +1,41 @@
-import { use, useEffect, useState } from "react";
-import styles from "./Card.module.css";
+import { useContext, useEffect, useState } from "react";
+import styles from "./Cartas.module.css";
+import { useJuegoCartas } from "../hooks/useJuegoCartas";
+import { GameContext } from "../GameContext";
 
 const Cartas = ({
   valor,
   palo,
   index,
-  setIndice,
-  noBoton,
-  setIndiceCartaElegida,
-  elegirCarta
+  setIndiceCartaPorDescartar,
+  esJugador1,
 }) => {
+  const { jugarCartas } = useJuegoCartas();
+  const { faseJuego, esTurnoJugador1 } = useContext(GameContext);
+  const [estaSeleccionada, setEstaSeleccionada] = useState(false);
   function handleclick() {
-    if (setIndice === null) return;
-    setIndice(index);
+    setIndiceCartaPorDescartar(index);
+    if (faseJuego) {
+      jugarCartas(index, esJugador1);
+      if (
+        (faseJuego && esTurnoJugador1 && esJugador1) ||
+        (!esJugador1 && !esTurnoJugador1)
+      )
+        setEstaSeleccionada(true);
+    }
   }
 
-  function elegirCarta() {
-    setIndiceCartaElegida(index);
-  }
   return (
     <div className={styles.card}>
       <img
         id="img"
         src={
-          /* index === 4 &&  */ valor !== undefined
-            ? `/img/${valor}-${palo}.png`
-            : "/img/reverso.png"
+          valor !== undefined ? `/img/${valor}-${palo}.png` : "/img/reverso.png"
         }
+        style={{ display: estaSeleccionada ? "none" : "block" }}
         alt="reverso cartas"
         width={90}
-        onClick={!noBoton ? handleclick : elegirCarta}
+        onClick={handleclick}
       />
     </div>
   );

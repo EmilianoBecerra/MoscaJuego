@@ -1,22 +1,18 @@
-.board {
-  width: 70%;
+section {
+  width: 80%;
   height: 100%;
-  background-color: green;
-  border-radius: 5px;
-}
-
-.cartasJugadoresRepartidas {
-  width: 70%;
-  height: 100%;
-  background-color: green;
-  border-radius: 5px;
   display: flex;
   flex-flow: column nowrap;
-  align-content: space-around;
+  justify-content: space-around;
+  align-content: center;
+  background-color: green;
+  border-radius: 5px;
+  padding: 5px;
 }
 
-.cartasJugadores {
+.cartas{
   display: flex;
   flex-flow: row nowrap;
-  align-items: end;
+  justify-content: center;
+  align-items: center;
 }
