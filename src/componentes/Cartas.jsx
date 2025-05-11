@@ -11,17 +11,28 @@ const Cartas = ({
   esJugador1,
 }) => {
   const { jugarCartas } = useJuegoCartas();
-  const { faseJuego, esTurnoJugador1 } = useContext(GameContext);
+  const { faseJuego, esTurnoJugador1, setEsTurnoJugador1, setJuegaJugador } =
+    useContext(GameContext);
   const [estaSeleccionada, setEstaSeleccionada] = useState(false);
   function handleclick() {
     setIndiceCartaPorDescartar(index);
     if (faseJuego) {
+      setJuegaJugador(false);
       jugarCartas(index, esJugador1);
       if (
-        (faseJuego && esTurnoJugador1 && esJugador1) ||
+        (esJugador1 && esTurnoJugador1) ||
         (!esJugador1 && !esTurnoJugador1)
-      )
+      ) {
         setEstaSeleccionada(true);
+      }
+      if (esJugador1 && esTurnoJugador1) {
+        setEsTurnoJugador1(false);
+        setJuegaJugador(false);
+      }
+      if (!esJugador1 && !esTurnoJugador1) {
+        setEsTurnoJugador1(true);
+        setJuegaJugador(true);
+      }
     }
   }
 

@@ -4,7 +4,8 @@ import { GameContext } from "../GameContext";
 export function useJuegoCartas() {
     const {
         cartasJugador1, setCartasJugador1,
-        cartasJugador2, setCartasJugador2, setTriunfo,
+        cartasJugador2, setCartasJugador2, 
+        setTriunfo,
         faseJuego, setFaseJuego,
         descarte, setDescarte,
         indiceCartaPorDescartar,
@@ -97,23 +98,22 @@ export function useJuegoCartas() {
     }
 
 
-    function jugarCartas(i, turno) {
+    function jugarCartas(i, esJugador1) {
         const cartasSelec1 = cartasJugadas1.slice();
         const cartasSelec2 = cartasJugadas2.slice();
-        if (turno) {
+        if (esJugador1) {
             if (!esTurnoJugador1) return;
             cartasSelec1[i] = cartasJugador1[i];
             setCartasJugadas1(cartasSelec1);
             setCartaSeleccionadaJugador1(cartasJugador1[i]);
-            setEsTurnoJugador1(prev => !prev);
         }
         else {
             if (esTurnoJugador1) return;
             cartasSelec2[i] = cartasJugador2[i];
             setCartasJugadas2(cartasSelec2);
             setCartaSeleccionadaJugador2(cartasJugador2[i]);
-            setEsTurnoJugador1(prev => !prev);
         }
+        return null;
     }
 
     return {

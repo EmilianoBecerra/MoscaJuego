@@ -23,9 +23,12 @@ export const GameProvider = ({ children }) => {
   const [indice2CartaPorDescartar, setIndice2CartaPorDescartar] =
     useState(null);
   const [esTurnoJugador1, setEsTurnoJugador1] = useState(true);
-  const [esGanadora, setEsGanadora] = useState({});
-  const [jugador1, setJugador1] = useState({});
-  const [jugador2, setJugador2] = useState({});
+  const [primerCartaJugada, setPrimerCartaJugada] = useState({});
+  const [cartaGanadora, setCartaGanadora] = useState(undefined);
+  const [puntosJugador1, setPuntosJugador1] = useState(15);
+  const [puntosJugador2, setPuntosJugador2] = useState(15);
+   const [juegaJugador, setJuegaJugador] = useState(null);
+
   return (
     <GameContext.Provider
       value={{
@@ -53,9 +56,13 @@ export const GameProvider = ({ children }) => {
         setCartasJugadas2,
         esTurnoJugador1,
         setEsTurnoJugador1,
-        esGanadora, setEsGanadora,
-        jugador1, setJugador1,
-        jugador2, setJugador2,
+        primerCartaJugada,
+        setPrimerCartaJugada,
+        cartaGanadora,
+        setCartaGanadora,
+        puntosJugador1, setPuntosJugador1,
+        puntosJugador2, setPuntosJugador2,
+        juegaJugador, setJuegaJugador,
         mazoRef,
       }}
     >

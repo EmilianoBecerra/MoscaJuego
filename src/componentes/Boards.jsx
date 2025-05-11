@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Boards.module.css";
 import Boton from "./Boton";
 import CartasElegidas from "./CartasElegidas";
@@ -9,23 +9,15 @@ import { useJuegoCartas } from "../hooks/useJuegoCartas";
 const Board = () => {
   const {
     cartasJugador1,
-    setCartasJugador1,
     cartasJugador2,
-    setCartasJugador2,
-    triunfo,
-    setTriunfo,
     faseJuego,
-    setFaseJuego,
     descarte,
-    setDescarte,
-    indiceCartaPorDescartar,
     setIndiceCartaPorDescartar,
-    indice2CartaPorDescartar,
     setIndice2CartaPorDescartar,
-    mazoRef,
+    juegaJugador,
   } = useContext(GameContext);
 
-  const { repartirCartas, descartarCartas, jugarCartas } = useJuegoCartas();
+  const { repartirCartas, descartarCartas } = useJuegoCartas();
 
   return (
     <section
@@ -43,6 +35,14 @@ const Board = () => {
             esJugador1={true}
           />
         ))}
+        {juegaJugador === null ? (
+          ""
+        ) : (
+          <div
+            style={{ display: juegaJugador ? "flex" : "none" }}
+            className={styles.juega}
+          ></div>
+        )}
       </div>
       {faseJuego ? (
         <CartasElegidas />
@@ -66,6 +66,14 @@ const Board = () => {
             esJugador1={false}
           />
         ))}
+        {juegaJugador === null ? (
+          ""
+        ) : (
+          <div
+            style={{ display: !juegaJugador ? "flex" : "none" }}
+            className={styles.juega}
+          ></div>
+        )}
       </div>
     </section>
   );

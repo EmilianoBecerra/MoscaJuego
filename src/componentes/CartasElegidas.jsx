@@ -7,6 +7,16 @@ const CartasElegidas = ({ cartasElegidas }) => {
   const {
     cartaSeleccionadaJugador1,
     cartaSeleccionadaJugador2,
+    cartaGanadora,
+    cartasJugador1,
+    setCartaSeleccionadaJugador1,
+    setCartaSeleccionadaJugador2,
+    esTurnoJugador1,
+    setEsTurnoJugador1,
+    setCartaGanadora,
+    setPuntosJugador1,
+    setPuntosJugador2,
+    triunfo
   } = useContext(GameContext);
   return (
     <div className={styles.cartasElegidas}>
@@ -22,7 +32,20 @@ const CartasElegidas = ({ cartasElegidas }) => {
         />
         <p>Jugador 1</p>
       </div>
-      <CartaGanadora/>
+      <CartaGanadora
+        cartaGanadora={cartaGanadora}
+        cartasJugador1={cartasJugador1}
+        setCartaSeleccionadaJugador1={setCartaSeleccionadaJugador1}
+        setCartaSeleccionadaJugador2={setCartaSeleccionadaJugador2}
+        esTurnoJugador1={esTurnoJugador1}
+        setEsTurnoJugador1={setEsTurnoJugador1}
+        cartaSeleccionadaJugador1={cartaSeleccionadaJugador1}
+        setCartaGanadora={setCartaGanadora}
+        cartaSeleccionadaJugador2={cartaSeleccionadaJugador2}
+        triunfo={triunfo}
+        setPuntosJugador1={setPuntosJugador1}
+        setPuntosJugador2={setPuntosJugador2}
+      />
       <div className={styles.zonaCartas}>
         <img
           src={
