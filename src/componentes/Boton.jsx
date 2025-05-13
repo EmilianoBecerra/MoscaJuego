@@ -5,8 +5,7 @@ const Boton = ({ noBoton, descarte, descartarCartas, repartirCartas }) => {
     <div className={styles.start}>
       <hr style={{ display: noBoton ? "none" : "block" }} />
       <button
-        onClick={descarte && !noBoton ? descartarCartas : repartirCartas}
-        style={{ display: noBoton ? "none" : "block" }}
+        onClick={descarte ? descartarCartas : repartirCartas}
       >
         {!descarte ? "Repartir" : "Descarte"}
       </button>

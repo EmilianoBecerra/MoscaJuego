@@ -11,13 +11,13 @@ const Cartas = ({
   esJugador1,
 }) => {
   const { jugarCartas } = useJuegoCartas();
-  const { faseJuego, esTurnoJugador1, setEsTurnoJugador1, setJuegaJugador } =
+  const { faseJuego, esTurnoJugador1, setEsTurnoJugador1, descarte, nuevaRonda } =
     useContext(GameContext);
   const [estaSeleccionada, setEstaSeleccionada] = useState(false);
+  
   function handleclick() {
     setIndiceCartaPorDescartar(index);
     if (faseJuego) {
-      setJuegaJugador(false);
       jugarCartas(index, esJugador1);
       if (
         (esJugador1 && esTurnoJugador1) ||
@@ -27,24 +27,29 @@ const Cartas = ({
       }
       if (esJugador1 && esTurnoJugador1) {
         setEsTurnoJugador1(false);
-        setJuegaJugador(false);
       }
       if (!esJugador1 && !esTurnoJugador1) {
         setEsTurnoJugador1(true);
-        setJuegaJugador(true);
       }
     }
   }
-
+  useEffect(() => {
+    setEstaSeleccionada(false);
+  },[nuevaRonda])
+ 
   return (
     <div className={styles.card}>
       <img
         id="img"
         src={
-          valor !== undefined ? `/img/${valor}-${palo}.png` : "/img/reverso.png"
+          (valor !== undefined && descarte) ||
+          (esJugador1 && esTurnoJugador1 && faseJuego) ||
+          (!esJugador1 && !esTurnoJugador1 && faseJuego)
+            ? `/img/${valor}-${palo}.png`
+            : "/img/reverso.png"
         }
         style={{ display: estaSeleccionada ? "none" : "block" }}
-        alt="reverso cartas"
+        alt="cartas"
         width={90}
         onClick={handleclick}
       />

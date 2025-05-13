@@ -5,7 +5,6 @@ export const GameContext = createContext();
 
 export const GameProvider = ({ children }) => {
   const mazoRef = useRef([...mazo]);
-
   const [cartasJugador1, setCartasJugador1] = useState(Array(5).fill(null));
   const [cartasJugador2, setCartasJugador2] = useState(Array(5).fill(null));
   const [triunfo, setTriunfo] = useState({});
@@ -18,8 +17,8 @@ export const GameProvider = ({ children }) => {
   const [cartaSeleccionadaJugador2, setCartaSeleccionadaJugador2] = useState(
     {}
   );
-  const [cartasJugadas1, setCartasJugadas1] = useState(Array(5).fill(null));
-  const [cartasJugadas2, setCartasJugadas2] = useState(Array(5).fill(null));
+  const [cartasJugadas1, setCartasJugadas1] = useState([]);
+  const [cartasJugadas2, setCartasJugadas2] = useState([]);
   const [indice2CartaPorDescartar, setIndice2CartaPorDescartar] =
     useState(null);
   const [esTurnoJugador1, setEsTurnoJugador1] = useState(true);
@@ -27,7 +26,7 @@ export const GameProvider = ({ children }) => {
   const [cartaGanadora, setCartaGanadora] = useState(undefined);
   const [puntosJugador1, setPuntosJugador1] = useState(15);
   const [puntosJugador2, setPuntosJugador2] = useState(15);
-   const [juegaJugador, setJuegaJugador] = useState(null);
+  const [nuevaRonda, setNuevaRonda] = useState(false);
 
   return (
     <GameContext.Provider
@@ -60,9 +59,12 @@ export const GameProvider = ({ children }) => {
         setPrimerCartaJugada,
         cartaGanadora,
         setCartaGanadora,
-        puntosJugador1, setPuntosJugador1,
-        puntosJugador2, setPuntosJugador2,
-        juegaJugador, setJuegaJugador,
+        puntosJugador1,
+        setPuntosJugador1,
+        puntosJugador2,
+        setPuntosJugador2,
+        nuevaRonda,
+        setNuevaRonda,
         mazoRef,
       }}
     >

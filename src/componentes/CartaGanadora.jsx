@@ -82,8 +82,13 @@ const CartaGanadora = ({
   }
 
   useEffect(() => {
-    const primeraCarta = cartasJugador1[0];
-
+    let primeraCarta = undefined;
+    if (esTurnoJugador1) {
+      primeraCarta = cartaSeleccionadaJugador1;
+    }
+    if (primeraCarta === undefined && !esTurnoJugador1) {
+      primeraCarta = cartaSeleccionadaJugador2;
+    }
     if (
       cartaSeleccionadaJugador1?.valor !== undefined &&
       cartaSeleccionadaJugador2?.valor !== undefined &&
@@ -103,13 +108,16 @@ const CartaGanadora = ({
       }
     }
   }, [
-    cartaSeleccionadaJugador1,
+     cartaSeleccionadaJugador1,
     cartaSeleccionadaJugador2,
     cartasJugador1,
     setCartaGanadora,
     setCartaSeleccionadaJugador1,
     setCartaSeleccionadaJugador2,
     setEsTurnoJugador1,
+    esTurnoJugador1,
+    setPuntosJugador2,
+    setPuntosJugador1
   ]);
 
   return (

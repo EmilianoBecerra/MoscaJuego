@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import styles from "./CartasElegidas.module.css";
 import { GameContext } from "../GameContext";
 import CartaGanadora from "./CartaGanadora";
@@ -16,8 +16,12 @@ const CartasElegidas = ({ cartasElegidas }) => {
     setCartaGanadora,
     setPuntosJugador1,
     setPuntosJugador2,
+    setDescarte,
     triunfo
   } = useContext(GameContext);
+  useEffect(() => {
+    setDescarte(false);
+  },[])
   return (
     <div className={styles.cartasElegidas}>
       <div className={styles.zonaCartas}>

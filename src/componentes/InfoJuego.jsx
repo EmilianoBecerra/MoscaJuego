@@ -6,7 +6,7 @@ const InfoJuego = () => {
   return (
     <div>
       <h2>
-        Carta de triunfo: {triunfo.valor} de {triunfo.palo}
+        Palo triunfo: {triunfo.palo}
       </h2>
     </div>
   );

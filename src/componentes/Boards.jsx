@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./Boards.module.css";
 import Boton from "./Boton";
 import CartasElegidas from "./CartasElegidas";
@@ -14,12 +14,36 @@ const Board = () => {
     descarte,
     setIndiceCartaPorDescartar,
     setIndice2CartaPorDescartar,
-    juegaJugador,
+    puntosJugador1,
+    puntosJugador2,
+    setPuntosJugador1,
+    setPuntosJugador2
   } = useContext(GameContext);
+  const { repartirCartas, descartarCartas, reiniciarJuego } = useJuegoCartas();
+  const [ganador, setGanador] = useState("");
 
-  const { repartirCartas, descartarCartas } = useJuegoCartas();
+  useEffect(() => {
+    if (puntosJugador1 === 0) {
+      setGanador("Jugador 1");
+    }
+    if (puntosJugador1 === 0) {
+      setGanador === 0;
+    }
+  }, [puntosJugador1, puntosJugador2]);
 
-  return (
+  function handleClick() {
+    setPuntosJugador1(15);
+    setPuntosJugador2(15);
+    reiniciarJuego();
+
+  }
+
+  return puntosJugador1 === 0 || puntosJugador2 === 0 ? (
+    <section>
+      <p>Gano {ganador} </p>
+      <button onClick={handleClick}>Jugar de nuevo</button>
+    </section>
+  ) : (
     <section
       className={faseJuego ? styles.cartasJugadoresRepartidas : styles.board}
     >
@@ -35,14 +59,6 @@ const Board = () => {
             esJugador1={true}
           />
         ))}
-        {juegaJugador === null ? (
-          ""
-        ) : (
-          <div
-            style={{ display: juegaJugador ? "flex" : "none" }}
-            className={styles.juega}
-          ></div>
-        )}
       </div>
       {faseJuego ? (
         <CartasElegidas />
@@ -66,14 +82,6 @@ const Board = () => {
             esJugador1={false}
           />
         ))}
-        {juegaJugador === null ? (
-          ""
-        ) : (
-          <div
-            style={{ display: !juegaJugador ? "flex" : "none" }}
-            className={styles.juega}
-          ></div>
-        )}
       </div>
     </section>
   );

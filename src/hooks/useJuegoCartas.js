@@ -1,20 +1,27 @@
-import { useEffect, useContext } from "react";
+import { useEffect, useContext, useRef } from "react";
 import { GameContext } from "../GameContext";
+import mazo from "../utils/mazo";
 
 export function useJuegoCartas() {
     const {
         cartasJugador1, setCartasJugador1,
-        cartasJugador2, setCartasJugador2, 
+        cartasJugador2, setCartasJugador2,
         setTriunfo,
+        setEsTurnoJugador1,
+        esTurnoJugador1,
         faseJuego, setFaseJuego,
+        setPrimerCartaJugada,
         descarte, setDescarte,
         indiceCartaPorDescartar,
         indice2CartaPorDescartar,
-        mazoRef,
         setCartaSeleccionadaJugador1, setCartaSeleccionadaJugador2,
         cartasJugadas1, setCartasJugadas1,
         cartasJugadas2, setCartasJugadas2,
-        esTurnoJugador1, setEsTurnoJugador1,
+        nuevaRonda, setNuevaRonda,
+        setCartaGanadora,
+        setIndiceCartaPorDescartar,
+        setIndice2CartaPorDescartar,
+        mazoRef,
     } = useContext(GameContext);
 
     useEffect(() => {
@@ -42,12 +49,11 @@ export function useJuegoCartas() {
                 actualizarCartasJugador2(indice2CartaPorDescartar);
             }
         }
-
     }, [indiceCartaPorDescartar, indice2CartaPorDescartar]);
 
 
     function repartirCartas() {
-        if (!descarte) {
+        if (!descarte && !faseJuego) {
             const cartasMazo = mazoRef.current;
             const jugador1Cartas = [];
             const jugador2Cartas = [];
@@ -64,16 +70,18 @@ export function useJuegoCartas() {
             setCartasJugador2(jugador2Cartas);
             setTriunfo(jugador1Cartas[4]);
             setDescarte(true);
+            setEsTurnoJugador1(true);
         }
     }
 
     function descartarCartas() {
         if (descarte) {
+            setNuevaRonda(false);
             const cartasMazo = mazoRef.current;
             const jugador1Cartas = [];
             const jugador2Cartas = [];
 
-            cartasJugador1.map((carta) => {
+            cartasJugador1.forEach((carta) => {
                 if (carta.valor === undefined) {
                     let nCarta = Math.floor(Math.random() * cartasMazo.length + 0);
                     const nuevaCarta = cartasMazo.splice(nCarta, 1)[0];
@@ -83,7 +91,7 @@ export function useJuegoCartas() {
                 }
             });
             setCartasJugador1(jugador1Cartas);
-            cartasJugador2.map((carta) => {
+            cartasJugador2.forEach((carta) => {
                 if (carta.valor === undefined) {
                     let nCarta = Math.floor(Math.random() * cartasMazo.length + 0);
                     const nuevaCarta = cartasMazo.splice(nCarta, 1)[0];
@@ -99,26 +107,53 @@ export function useJuegoCartas() {
 
 
     function jugarCartas(i, esJugador1) {
-        const cartasSelec1 = cartasJugadas1.slice();
-        const cartasSelec2 = cartasJugadas2.slice();
         if (esJugador1) {
             if (!esTurnoJugador1) return;
-            cartasSelec1[i] = cartasJugador1[i];
-            setCartasJugadas1(cartasSelec1);
+            const cartaJugada = cartasJugador1[i];
+            setCartasJugadas1((prev) => [...prev, cartaJugada]);
             setCartaSeleccionadaJugador1(cartasJugador1[i]);
+            if ((cartasJugadas1.length === 5 & cartasJugadas2.length === 4) || (cartasJugadas1.length === 4 & cartasJugadas2.length === 5)) {
+                setTimeout(()=>{
+                    reiniciarJuego();
+                }, 100)
+            }
         }
         else {
             if (esTurnoJugador1) return;
-            cartasSelec2[i] = cartasJugador2[i];
-            setCartasJugadas2(cartasSelec2);
+            const cartaJugada = cartasJugador2[i];
+            setCartasJugadas2((prev) => [...prev, cartaJugada]);
             setCartaSeleccionadaJugador2(cartasJugador2[i]);
+            if ((cartasJugadas1.length === 5 & cartasJugadas2.length === 4) || (cartasJugadas1.length === 4 & cartasJugadas2.length === 5)) {
+                setTimeout(()=>{
+                    reiniciarJuego();
+                }, 100)
+               
+            }
         }
-        return null;
+    }
+
+    function reiniciarJuego() {
+        mazoRef.current = [...mazo];
+        setCartasJugador1(Array(5).fill(null))
+        setCartasJugador2(Array(5).fill(null));
+        setFaseJuego(false);
+        setDescarte(false);
+        setIndiceCartaPorDescartar(null);
+        setCartaSeleccionadaJugador1({})
+        setCartaSeleccionadaJugador2({})
+        setCartasJugadas1([]);
+        setCartasJugadas2([]);
+        setIndice2CartaPorDescartar(null);
+        setEsTurnoJugador1(true);
+        setPrimerCartaJugada({});
+        setCartaGanadora(undefined);
+        setNuevaRonda(true);
     }
 
     return {
         repartirCartas,
         descartarCartas,
-        jugarCartas
+        jugarCartas,
+        reiniciarJuego
     };
 };
