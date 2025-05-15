@@ -8,9 +8,8 @@ const Jugadores = ({ jugador }) => {
   const {puntosJugador1, puntosJugador2} = useContext(GameContext);
   return (
     <div className={styles.infoJuegadores}>
-      <h2>{jugador}</h2>
-      <p>Puntos:{jugador === "Jugador 1" ? puntosJugador1 : puntosJugador2}</p>
-      <CartasSeleccionadas jugadores={jugador}/>
+      <h2 className={styles.jugadores}>{jugador}</h2>
+      <p className={styles.puntos}><strong>Puntos:{jugador === "Jugador 1" ? puntosJugador1 : puntosJugador2}</strong></p>
     </div>
   );
 };

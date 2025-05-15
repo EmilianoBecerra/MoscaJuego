@@ -50,7 +50,7 @@ const Cartas = ({
         }
         style={{ display: estaSeleccionada ? "none" : "block" }}
         alt="cartas"
-        width={90}
+        width={85}
         onClick={handleclick}
       />
     </div>

@@ -1,14 +1,45 @@
-.main {
-  height: 100vh;
-  width: 100vw;
+.body {
+  min-height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-.tablero {
-  flex: 1;
+.header {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-around;
-  padding: 10px;
+  justify-content: space-between;
+  align-items: baseline;
+  height: fit-content;
+  padding: 5px 20px;
+}
+
+.main {
+  flex-grow: 1;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.informacionJuego {
+  width: 90%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.buttonManual {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: black;
+}
+
+
+.footer {
+  height: auto;
+  font-size: 0.8rem;
+  text-align: center;
 }

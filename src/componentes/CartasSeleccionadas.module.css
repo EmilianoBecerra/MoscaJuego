@@ -1,6 +1,20 @@
 .cartasJugadas {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+}
+
+.cartasElegidas {
+ display: flex;
+ flex-flow: row nowrap;
+}
+
+.cartaGanadora {
+  filter: none;
+}
+
+.cartaPerdedora {
+  filter: blur(2px) grayscale(80%);
+  opacity: 0.6;
 }

@@ -17,11 +17,13 @@ export function useJuegoCartas() {
         setCartaSeleccionadaJugador1, setCartaSeleccionadaJugador2,
         cartasJugadas1, setCartasJugadas1,
         cartasJugadas2, setCartasJugadas2,
-        nuevaRonda, setNuevaRonda,
+        setNuevaRonda,
         setCartaGanadora,
         setIndiceCartaPorDescartar,
         setIndice2CartaPorDescartar,
         mazoRef,
+        setHistorialRondas,
+        setHayGanador
     } = useContext(GameContext);
 
     useEffect(() => {
@@ -113,9 +115,7 @@ export function useJuegoCartas() {
             setCartasJugadas1((prev) => [...prev, cartaJugada]);
             setCartaSeleccionadaJugador1(cartasJugador1[i]);
             if ((cartasJugadas1.length === 5 & cartasJugadas2.length === 4) || (cartasJugadas1.length === 4 & cartasJugadas2.length === 5)) {
-                setTimeout(()=>{
-                    reiniciarJuego();
-                }, 100)
+                setHayGanador(true);
             }
         }
         else {
@@ -124,10 +124,7 @@ export function useJuegoCartas() {
             setCartasJugadas2((prev) => [...prev, cartaJugada]);
             setCartaSeleccionadaJugador2(cartasJugador2[i]);
             if ((cartasJugadas1.length === 5 & cartasJugadas2.length === 4) || (cartasJugadas1.length === 4 & cartasJugadas2.length === 5)) {
-                setTimeout(()=>{
-                    reiniciarJuego();
-                }, 100)
-               
+                setHayGanador(true);
             }
         }
     }
@@ -148,6 +145,8 @@ export function useJuegoCartas() {
         setPrimerCartaJugada({});
         setCartaGanadora(undefined);
         setNuevaRonda(true);
+        setHistorialRondas([]);
+        setHayGanador(false);
     }
 
     return {

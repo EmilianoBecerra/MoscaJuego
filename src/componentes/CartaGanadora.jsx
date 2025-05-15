@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+/* import { useContext, useEffect } from "react";
 
 const CartaGanadora = ({
   cartaGanadora,
@@ -134,3 +134,4 @@ const CartaGanadora = ({
 };
 
 export default CartaGanadora;
+ */

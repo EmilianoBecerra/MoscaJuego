@@ -2,6 +2,7 @@ import { useContext, useEffect } from "react";
 import styles from "./CartasElegidas.module.css";
 import { GameContext } from "../GameContext";
 import CartaGanadora from "./CartaGanadora";
+import CartasSeleccionadas from "./CartasSeleccionadas";
 
 const CartasElegidas = ({ cartasElegidas }) => {
   const {
@@ -27,38 +28,25 @@ const CartasElegidas = ({ cartasElegidas }) => {
       <div className={styles.zonaCartas}>
         <img
           src={
-            cartaSeleccionadaJugador1?.valor === undefined
-              ? "/img/reverso.png"
-              : `/img/${cartaSeleccionadaJugador1?.valor}-${cartaSeleccionadaJugador1?.palo}.png`
-          }
-          alt="cartas elegidas"
-          width={100}
-        />
-        <p>Jugador 1</p>
-      </div>
-      <CartaGanadora
-        cartaGanadora={cartaGanadora}
-        cartasJugador1={cartasJugador1}
-        setCartaSeleccionadaJugador1={setCartaSeleccionadaJugador1}
-        setCartaSeleccionadaJugador2={setCartaSeleccionadaJugador2}
-        esTurnoJugador1={esTurnoJugador1}
-        setEsTurnoJugador1={setEsTurnoJugador1}
-        cartaSeleccionadaJugador1={cartaSeleccionadaJugador1}
-        setCartaGanadora={setCartaGanadora}
-        cartaSeleccionadaJugador2={cartaSeleccionadaJugador2}
-        triunfo={triunfo}
-        setPuntosJugador1={setPuntosJugador1}
-        setPuntosJugador2={setPuntosJugador2}
-      />
-      <div className={styles.zonaCartas}>
-        <img
-          src={
             cartaSeleccionadaJugador2?.valor === undefined
               ? "/img/reverso.png"
               : `/img/${cartaSeleccionadaJugador2?.valor}-${cartaSeleccionadaJugador2?.palo}.png`
           }
+          alt="cartas elegidas"
+          width={90}
+        />
+        <p>Jugador 1</p>
+      </div>
+      <CartasSeleccionadas />
+      <div className={styles.zonaCartas}>
+        <img
+          src={
+            cartaSeleccionadaJugador1?.valor === undefined
+              ? "/img/reverso.png"
+              : `/img/${cartaSeleccionadaJugador1?.valor}-${cartaSeleccionadaJugador1?.palo}.png`
+          }
           alt="cartas elegidas 2"
-          width={100}
+          width={90}
         />
         <p>jugador2</p>
       </div>

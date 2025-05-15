@@ -1,0 +1,89 @@
+.Manual {
+
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+.baraja {
+    grid-area: baraja;
+}
+
+.valores {
+    grid-area: valores;
+}
+
+.triunfo {
+    grid-area: triunfo;
+}
+
+.puntuacion {
+    grid-area: puntuacion;
+}
+
+.reglas {
+    grid-area: reglas;
+}
+
+.explicacion {
+    display: grid;
+    grid-template-areas:
+        ' header header'
+        'baraja valores'
+        'triunfo puntuacion'
+        'reglas reglas '
+    ;
+}
+
+h1,
+h2,
+h3 {
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    padding-left: 1.2rem;
+    list-style-type: disc;
+}
+
+p {
+    line-height: 1.6;
+}
+
+.header {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    grid-area: header;
+}
+
+.baraja,
+.valores,
+.triunfo,
+.puntuacion {
+    padding: 10px 20px;
+    border: 1px solid gray;
+    margin: 1px;
+    border-radius: 10px;
+}
+
+.divButton {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonManual {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    outline: auto;
+    text-decoration: none;
+    color: white;
+    background-color: gray;
+}

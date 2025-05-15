@@ -27,6 +27,8 @@ export const GameProvider = ({ children }) => {
   const [puntosJugador1, setPuntosJugador1] = useState(15);
   const [puntosJugador2, setPuntosJugador2] = useState(15);
   const [nuevaRonda, setNuevaRonda] = useState(false);
+  const [historialRondas, setHistorialRondas] = useState([]);
+  const [hayGanador, setHayGanador] = useState(false);
 
   return (
     <GameContext.Provider
@@ -66,6 +68,9 @@ export const GameProvider = ({ children }) => {
         nuevaRonda,
         setNuevaRonda,
         mazoRef,
+        historialRondas,
+        setHistorialRondas,
+        hayGanador, setHayGanador
       }}
     >
       {children}

@@ -1,8 +1,12 @@
-h2{
+.jugadores{
   text-align: center;
 }
 
 .infoJuegadores {
   width: 10%;
   width: fit-content;
+}
+
+.puntos {
+  text-align: center;
 }
