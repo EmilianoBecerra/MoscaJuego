@@ -1,0 +1,31 @@
+.divMesa {
+    width: 90%;
+    height: 200px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 40%;
+    background: radial-gradient(circle, rgba(56, 190, 112, 1) 0%, rgba(41, 135, 83, 1) 50%);
+    border: 10px solid #8d592c;
+    color: black;
+}
+
+.entrarMesa {
+    background-color: transparent;
+    text-decoration: none;
+    font-size: var(--font-size);
+    font-weight: 600;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+}
+
+.entrarMesa:hover {
+    color: black;
+    font-weight: bold;
+}
+
+.jugadoresOnline {
+    background-color: transparent;
+}

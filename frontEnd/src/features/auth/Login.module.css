@@ -1,0 +1,54 @@
+.login {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    color: var(--font-color);
+}
+
+.introduccion {
+    margin: 10px 0px;
+    text-align: center;
+}
+
+.registrate {
+    color: var(--buttom-color);
+    font-weight: 500;
+}
+
+.formulario {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    font-size: var(--font-size);
+    border-radius: 5px;
+    border: none;
+    margin: 5px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+}
+
+
+.btnForm {
+    padding: 3px;
+    width: 200px;
+    margin: 3px 0px;
+    cursor: pointer;
+    border-radius: var(--border-radius);
+    border: none;
+    background-color: var(--buttom-color);
+    color: var(--font-color);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.btnForm:hover {
+    background-color: var(--buttom-hover);
+}
