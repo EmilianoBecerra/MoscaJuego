@@ -16,9 +16,11 @@ export const useLogin = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         const { usuario, password } = formData;
-        const lsUsuario = localStorage.getItem("usuario");
-        const lsPassword = localStorage.getItem("idUsuario");
-        if (usuario && password && !lsUsuario && !lsPassword) {
+
+        const lsUsuario = localStorage.getItem("idUsuario");
+        const lsNombreUsuario = localStorage.getItem("nombreUsuario");
+
+        if (usuario && password && !lsUsuario) {
             const traerUsuario = await obtenerUsuario(usuario, password);
 
             if (traerUsuario?.error === "Contraseña incorrecta") {
@@ -26,21 +28,20 @@ export const useLogin = () => {
                 return;
             }
 
-            if (traerUsuario?.error == "No existe usuario") {
+            if (traerUsuario?.error === "No existe usuario") {
                 setError(traerUsuario.error);
                 return;
             }
 
             if (traerUsuario) {
                 setUsuarios(traerUsuario);
-                localStorage.setItem("usuario", traerUsuario.usuario);
                 localStorage.setItem("idUsuario", traerUsuario.id);
+                localStorage.setItem("nombreUsuario", traerUsuario.usuario);
             }
         }
-        if (lsUsuario && lsPassword) {
+        if (lsUsuario) {
             navigate("/home");
         }
-        //verificar esto
     }
 
     const handleClickRegister = (e) => {

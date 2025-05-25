@@ -5,7 +5,6 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    border-radius: 40%;
     background: radial-gradient(circle, rgba(56, 190, 112, 1) 0%, rgba(41, 135, 83, 1) 50%);
     border: 10px solid #8d592c;
     color: black;

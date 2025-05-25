@@ -1,10 +1,13 @@
 import express from "express";
-import { obtenerPartida } from "../controllers/partidaController.js";
+import { enviarPartida, ingresarPartida, descartarCartas, crearPartida } from "../controllers/partidaController.js";
 
 const router = express.Router();
 
 
-router.get("/", obtenerPartida);
+router.get("/", enviarPartida);
+router.post("/crearPartida", crearPartida)
+router.post("/ingresarPartida", ingresarPartida);
+router.post("/descartarCartas", descartarCartas);
 
 
 

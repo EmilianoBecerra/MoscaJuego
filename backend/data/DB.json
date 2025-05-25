@@ -1,94 +1,41 @@
 {
   "usuarios": [
     {
-      "id": "6f4d5842-cca5-4e29-8082-53aaa09268f7",
+      "id": "33a4f195-1f34-4ed2-b3ae-dc791295a5b3",
       "usuario": "emiliano",
       "password": "bec"
     }
   ],
   "jugadores": [
     {
-      "id": "05714326-0039-4124-9c90-2dd18de00a08",
-      "usuarioId": "6f4d5842-cca5-4e29-8082-53aaa09268f7",
+      "id": "687f388c-f01b-41a4-b2cf-6426e9f9b733",
+      "usuarioId": "33a4f195-1f34-4ed2-b3ae-dc791295a5b3",
       "nombreJugador": "emiliano",
       "cartas": [],
       "puntosglobales": 0,
-      "estado": "Conectado",
+      "online": true,
+      "estado": "Observando",
       "puntosPartida": 15,
-      "esTurno": false,
-      "mesaId": null,
-      "partidaEnCurso": "20599325-25a6-4fba-9087-df328eaca6f5"
+      "esTurno": "",
+      "mesaId": "77c4ad9f-b317-4b3b-a949-984db2e62d18",
+      "partidaEnCurso": null
     }
   ],
   "mesas": [
     {
-      "id": "2dcd97dd-b01a-4bdd-b98d-228eb3cdc064",
+      "id": "77c4ad9f-b317-4b3b-a949-984db2e62d18",
       "numeroDeMesa": 1,
-      "partidaId": "20599325-25a6-4fba-9087-df328eaca6f5",
-      "estado": "vacia",
-      "password": null,
-      "numeroJugadores": null
-    },
-    {
-      "id": "86c54d8b-e181-4fd2-8564-440e148fa3d3",
-      "numeroDeMesa": 2,
       "partidaId": null,
-      "estado": "vacia",
+      "estado": "Esperando Jugadores",
       "password": null,
-      "numeroJugadores": null
-    },
-    {
-      "id": "b03b37c0-7c36-4b70-bb80-cefdd64fe025",
-      "numeroDeMesa": 3,
-      "partidaId": null,
-      "estado": "vacia",
-      "password": null,
-      "numeroJugadores": null
-    },
-    {
-      "id": "7e3f6613-b23c-46e0-a118-7cf5ffa40e89",
-      "numeroDeMesa": 4,
-      "partidaId": null,
-      "estado": "vacia",
-      "password": null,
-      "numeroJugadores": null
-    },
-    {
-      "id": "784f3c02-fffc-46d1-8630-5f594ec5cea4",
-      "numeroDeMesa": 5,
-      "partidaId": null,
-      "estado": "vacia",
-      "password": null,
-      "numeroJugadores": null
+      "numerosJugadores": 1,
+      "jugadores": [
+        "687f388c-f01b-41a4-b2cf-6426e9f9b733",
+        null,
+        null,
+        null
+      ]
     }
   ],
-  "partidas": [
-    {
-      "partidaId": "20599325-25a6-4fba-9087-df328eaca6f5",
-      "mesaId": "2dcd97dd-b01a-4bdd-b98d-228eb3cdc064",
-      "fase": null,
-      "rondaActual": 1,
-      "cartasJugadas": [],
-      "estado": "Esperando jugadores",
-      "ganadorRonda": null,
-      "jugadores": [
-        {
-          "id": "05714326-0039-4124-9c90-2dd18de00a08",
-          "usuarioId": "6f4d5842-cca5-4e29-8082-53aaa09268f7",
-          "nombreJugador": "emiliano",
-          "cartas": [],
-          "puntosglobales": 0,
-          "estado": "Conectado",
-          "puntosPartida": 15,
-          "esTurno": false,
-          "mesaId": null,
-          "partidaEnCurso": "20599325-25a6-4fba-9087-df328eaca6f5"
-        }
-      ],
-      "triunfo": {},
-      "mazo": [],
-      "mazoRestante": [],
-      "turnoJugador": null
-    }
-  ]
+  "partidas": []
 }

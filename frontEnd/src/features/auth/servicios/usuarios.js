@@ -22,7 +22,7 @@ export const obtenerUsuario = async (usuario, password) => {
 }
 
 
-export const crearUSuario = async (formData) => {
+export const crearUsuario = async (formData) => {
     try {
         const response = await axios.post(
             'http://localhost:3000/api/usuarios/',

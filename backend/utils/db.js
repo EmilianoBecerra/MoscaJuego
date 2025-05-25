@@ -19,6 +19,6 @@ export const guardarDB = async (contenido) => {
         const data = JSON.stringify(contenido,null, 2);
         await writeFile(dbPath, data, "utf-8");
     } catch (error) {
-        console.error("Error al guardar la base da datos:", error)
+        console.error("Error al guardar la base de datos:", error)
     }
 }

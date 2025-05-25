@@ -9,7 +9,7 @@ import Register from "./features/auth/componentes/Register";
 import Tablero from "./features/tablero/componentes/Tablero";
 
 const App = () => {
-  const usuario = localStorage.getItem("usuario");
+  const usuario = localStorage.getItem("nombreUsuario");
   const idUsuario = localStorage.getItem("idUsuario");
 
   useEffect(() => {}, [usuario, idUsuario]);

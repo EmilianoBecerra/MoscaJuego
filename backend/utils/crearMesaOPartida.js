@@ -1,25 +1,26 @@
 import { v4 as uuid } from "uuid";
 
 export function crearMesa(mesasCreadas) {
-    const mesaId = uuid();
+    const id = uuid();
 
     const nuevaMesa = {
-        id: mesaId,
+        id,
         numeroDeMesa: mesasCreadas + 1,
         partidaId: null,
-        estado: "vacia",
+        estado: "Esperando Jugadores",
         password: null,
-        idJugadores: null
+        numerosJugadores: 0,
+        jugadores: []
     }
 
     return nuevaMesa;
 }
 
 export function crearPartida(mesaId) {
-    const partidaId = uuid();
+    const id = uuid();
     const nuevaPartida = {
-        partidaId,
-        mesaId: null,
+        id,
+        mesaId,
         fase: null,
         rondaActual: 1,
         cartasJugadas: [],
@@ -27,7 +28,7 @@ export function crearPartida(mesaId) {
         ganadorRonda: null,
         jugadores: [
         ],
-        triunfo: {},
+        triunfo: null,
         mazo: [],
         mazoRestante: [],
         turnoJugador: null

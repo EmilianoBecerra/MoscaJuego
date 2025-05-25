@@ -1,33 +1,28 @@
+import { useContext } from "react";
+import { useManoJugador } from "../hooks/useManoJugador";
 import styles from "../ManoJugador.module.css";
+import { GameContext } from "../../../context/GameContext";
 
-const ManoJugador = () => {
-  const ingresarPartida = false;
+const ManoJugador = ({ jugador }) => {
+  const {
+    handleClick,
+    seleccionarCartas,
+    cartasSeleccionadas,
+    enviarCartasDescartadas,
+    isLoading,
+    isError,
+  } = useManoJugador();
+  const { cartas, partida } = useContext(GameContext);
   return (
-    <div className={styles.manoJugador}>
-      {ingresarPartida ? (
-        <div className={styles.cartas}>
-          {cartas?.map((carta, index) => (
-            <img
-              key={index}
-              src={`/img/${carta.valor}-${carta.palo}.png`}
-              alt={`Carta ${carta.valor} de ${carta.palo}`}
-              onClick={() => toggleSeleccion(carta)}
-              width={85}
-            />
-          ))}
-          <button
-            onClick={descartarCartas}
-            disabled={seleccionadas.length === 0}
-          >
-            {" "}
-            Descartar cartas{" "}
-          </button>
-        </div>
-      ) : (
-        <div>
-          <button style={{ color: "red" }}>Ingresar Partida</button>
-        </div>
-      )}
+    <div className={styles.espacioJugador}>
+      <div className={styles.manoJugador}>
+        <button
+          className={styles.botonIngresar}
+          onClick={() => handleClick(jugador)}
+        >
+          Ingresar Partida
+        </button>
+      </div>
     </div>
   );
 };

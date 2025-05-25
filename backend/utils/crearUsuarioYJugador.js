@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+import { v4 as uuid } from 'uuid';
 
 export function crearUsuarioYJugador({ usuario, password }) {
     const usuarioId = uuid();
@@ -16,9 +16,10 @@ export function crearUsuarioYJugador({ usuario, password }) {
         nombreJugador: usuario,
         cartas: [],
         puntosglobales: 0,
-        estado: "Conectado",
+        online: true,
+        estado: 'Conectado',
         puntosPartida: 15,
-        esTurno: false,
+        esTurno: '',
         mesaId: null,
         partidaEnCurso: null
     };

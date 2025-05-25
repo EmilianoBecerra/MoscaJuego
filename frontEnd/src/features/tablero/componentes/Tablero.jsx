@@ -1,36 +1,31 @@
 import ManoJugador from "./ManoJugador";
 import styles from "../Tablero.module.css";
 import { useTablero } from "../hooks/useTablero";
+import { useContext } from "react";
+import { GameContext } from "../../../context/GameContext";
 
 const Tablero = () => {
-  const { partida } = useTablero();
-  
+  const { partida } = useContext(GameContext);
+  /* const { isLoading } = useTablero();
+
+  if (!partida) {
+    if (isLoading) return <p style={{ color: "white" }}>cargando...</p>;
+  } */
+
   return (
     <div className={styles.mesa}>
       <div className={styles.infoJuego}>
         <table className={styles.tablaPuntuacion}>
           <thead>
-            <tr className={styles.filas}>
-              {partida.jugadores.map((j, index) => (
-                <th key={index} className={styles.columnas}>
-                  {j.nombreJugador ? j.nombreJugador : `Jugadores`}
-                </th>
-              ))}
-            </tr>
+            <tr className={styles.filas}></tr>
           </thead>
           <tbody>
-            <tr className={styles.filas}>
-              {
-                partida.jugadores.map((j,index) => (
-                  <td key={index} className={styles.columnas}>{j.puntosPartida}</td>
-                ))
-              }
-            </tr>
+            <tr className={styles.filas}></tr>
           </tbody>
         </table>
         <section className={styles.infoCartas}>
-          <p>Triunfo:</p>
           <p>Tiempo de partida:</p>
+          <p>60</p>
           <article>
             <p>Tutorial</p>
           </article>
@@ -51,8 +46,9 @@ const Tablero = () => {
         <div className={`${styles.izquierda} ${styles.manoJugador}`}>
           <ManoJugador />
         </div>
+
         <div className={styles.mesaCentro}>
-          <p>Cartas jugadas</p>
+          <p>Esperando jugadores</p>
         </div>
       </div>
     </div>

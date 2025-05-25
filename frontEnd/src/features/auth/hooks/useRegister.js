@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { crearUSuario } from "../servicios/usuarios";
+import { crearUsuario } from "../servicios/usuarios";
 
 
 export const useRegister = () => {
@@ -21,7 +21,7 @@ export const useRegister = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await crearUSuario(formData);
+        await crearUsuario(formData);
         navigate('/');
     };
 

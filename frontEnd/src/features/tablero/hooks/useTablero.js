@@ -1,13 +1,28 @@
-import { useContext, useEffect } from "react"
-import { GameContext } from "../../../context/GameContext"
-
-
+import { useContext, useEffect, useState } from 'react'
+import { GameContext } from '../../../context/GameContext'
+import { traerPartida } from '../servicios/buscarPartida';
 
 export const useTablero = () => {
-    const { partida } = useContext(GameContext);
+    const [error, setError] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
+    const { partida, setPartida } = useContext(GameContext);
+    const partidaId = localStorage.getItem('partidaId');
     useEffect(() => {
-        console.log(partida);
-    }, [])
+        const obtenerPartida = async () => {
+            if (!partida) {
+                try {
+                    const actualizarPartida = await traerPartida(partidaId);
+                    setPartida(actualizarPartida);
+                } catch (error) {
+                    setError(true);
+                    console.error('Error al traer la partida', error)
+                } finally {
+                    setIsLoading(false);
+                }
+            }
+        }
+        obtenerPartida();
 
-    return { partida };
+    }, [partida, isLoading, error])
+    return { error, isLoading }
 }

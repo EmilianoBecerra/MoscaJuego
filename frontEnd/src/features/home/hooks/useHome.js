@@ -1,30 +1,32 @@
-import { useContext, useEffect } from "react";
-import { GameContext } from "../../../context/GameContext";
-import { obtenerJugador } from "../servicios/obtenerJugador";
-import { obtenerMesas } from "../servicios/obtenerMesas";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect } from 'react';
+import { GameContext } from '../../../context/GameContext';
+import { obtenerJugador } from '../servicios/obtenerJugador';
+import { obtenerMesas } from '../servicios/obtenerMesas';
+import { useNavigate } from 'react-router-dom';
 
 export const useHome = () => {
     const { setMesasCreadas, mesasCreadas, jugador, setJugador } =
         useContext(GameContext);
     const navegate = useNavigate();
-    const idUsuario = localStorage.getItem("idUsuario");
-    const usuario = localStorage.getItem("usuario");
-
+    const idUsuario = localStorage.getItem('idUsuario');
+    const usuario = localStorage.getItem('nombreUsuario');
     useEffect(() => {
-        if (!jugador) navegate("/");
+        if (!idUsuario) navegate('/');
 
         const jugadorConectado = async () => {
-            const jugadorConectado = await obtenerJugador(idUsuario);
-            setJugador(jugadorConectado);
+            try {
+                const mesas = await obtenerMesas();
+                const jugadorConectado = await obtenerJugador(idUsuario);
+                setJugador(jugadorConectado);
+                setMesasCreadas(mesas);
+            }
+            catch (error) {
+                console.error('Error al obtener jugador y mesas');
+            }
+
         };
         jugadorConectado();
 
-        const mesas = async () => {
-            const mesas = await obtenerMesas();
-            setMesasCreadas(mesas);
-        };
-        mesas();
     }, []);
 
     const nombreJugador = jugador?.nombreJugador;

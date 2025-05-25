@@ -9,7 +9,7 @@ const Home = () => {
     <div className={styles.home}>
       <div className={styles.infoJugador}>
         <span>Nombre Usuario : {nombreJugador?.toUpperCase()}</span>
-        <span>Estado: {jugador?.estado}</span>
+        <span>Estado: {jugador?.online ? "Conectado" : "Desconectado"}</span>
         <span>Puntos Ranking: {jugador?.puntosglobales}</span>
       </div>
       <div className={styles.sala}>

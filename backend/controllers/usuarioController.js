@@ -29,18 +29,21 @@ export const obtenerUsuario = async (req, res) => {
         const db = await leerDB();
 
         const usuarioEncontrado = db.usuarios.find(u => u.usuario === usuario && u.password === password);
-        if(!usuarioEncontrado) {
+
+        if (usuarioEncontrado) {
+            const usuario = { usuario: usuarioEncontrado.usuario, id: usuarioEncontrado.id };
+            return res.status(200).json(usuario);
+        } else {
             const existeUsuario = db.usuarios.find(u => u.usuario === usuario);
-            if(!existeUsuario){
-                return res.status(409).json({error: "No existe usuario"});
+            if (!existeUsuario) {
+                return res.status(401).json({ error: "No existe usuario" });
             } else {
-                return res.status(409).json({error: "Contraseña incorrecta"});
+                return res.status(401).json({ error: "Contraseña incorrecta" });
             }
         }
-        const usuarioDevolver = {usuario: usuarioEncontrado.usuario , id: usuarioEncontrado.id};
-        return res.status(200).json(usuarioDevolver);    
+
     } catch (error) {
-        console.error("Error al obtener usuario:", error);
-        res.status(500).json({ error: "Error al intentar obtener usuario" });
+        console.error("Error al enviar usuario:", error);
+        res.status(500).json({ error: "Error al enviar usuario" });
     }
 }
