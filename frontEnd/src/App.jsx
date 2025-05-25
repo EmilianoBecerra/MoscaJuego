@@ -6,7 +6,6 @@ import Login from "./features/auth/componentes/Login";
 import Home from "./features/home/componentes/Home";
 import Manual from "./features/tutorial/componente/Manual";
 import Register from "./features/auth/componentes/Register";
-import Tablero from "./features/tablero/componentes/Tablero";
 
 const App = () => {
   const usuario = localStorage.getItem("nombreUsuario");
@@ -29,10 +28,9 @@ const App = () => {
           <main className={styles.main}>
             <Routes>
               <Route path="/" element={usuario ? <Home /> : <Login />} />
-              <Route path="/manual" element={<Manual />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/registrarse" element={<Register />} />
-              <Route path="/mesa/:id" element={<Tablero />} />
+             {/*  <Route path="/manual" element={<Manual />} />
+              <Route path="/home" element={<Home />} />*/}
+              <Route path="/registrarse" element={<Register />} /> 
             </Routes>
           </main>
           <footer className={styles.footer}>

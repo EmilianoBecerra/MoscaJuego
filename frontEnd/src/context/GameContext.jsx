@@ -6,9 +6,6 @@ export const GameProvider = ({ children }) => {
   const [usuarios, setUsuarios] = useState(null);
   const [jugador, setJugador] = useState(null);
   const [mesasCreadas, setMesasCreadas] = useState([]);
-  const [mesa, setMesa] = useState(null);
-  const [partida, setPartida] = useState(null);
-  const [cartas, setCartas] = useState([]);
 
   return (
     <GameContext.Provider
@@ -17,10 +14,7 @@ export const GameProvider = ({ children }) => {
         setUsuarios,
         mesasCreadas,
         setMesasCreadas,
-        jugador, setJugador,
-        partida, setPartida,
-        cartas, setCartas,
-        mesa, setMesa
+        jugador, setJugador
       }}
     >
       {children}

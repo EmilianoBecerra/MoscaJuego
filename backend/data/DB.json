@@ -1,41 +1,37 @@
 {
   "usuarios": [
     {
-      "id": "33a4f195-1f34-4ed2-b3ae-dc791295a5b3",
-      "usuario": "emiliano",
-      "password": "bec"
-    }
-  ],
-  "jugadores": [
+      "id": "f02f2424-fbcd-4ef6-8fc9-b680e3cbbf27",
+      "nombreUsuario": "emiliano",
+      "passwordHash": "$2b$10$f3.yYHq3X6dRMS.iUqHDBOQmJIddJtDimdGl4bXCggnHkJDHVv8YO",
+      "correo": "emibecerra92@gmail.com"
+    },
     {
-      "id": "687f388c-f01b-41a4-b2cf-6426e9f9b733",
-      "usuarioId": "33a4f195-1f34-4ed2-b3ae-dc791295a5b3",
-      "nombreJugador": "emiliano",
-      "cartas": [],
-      "puntosglobales": 0,
-      "online": true,
-      "estado": "Observando",
-      "puntosPartida": 15,
-      "esTurno": "",
-      "mesaId": "77c4ad9f-b317-4b3b-a949-984db2e62d18",
-      "partidaEnCurso": null
-    }
-  ],
-  "mesas": [
+      "id": "09f4426e-1dbb-4408-bda5-73bf03750e54",
+      "nombreUsuario": "victoria",
+      "passwordHash": "$2b$10$HMU0l2pLiBaCDUNyny/if.KpMnnDvZjsb9kEUGAvMxWq48LsOAkNG",
+      "correo": "victoriasuarez93@gmail.com"
+    },
     {
-      "id": "77c4ad9f-b317-4b3b-a949-984db2e62d18",
-      "numeroDeMesa": 1,
-      "partidaId": null,
-      "estado": "Esperando Jugadores",
-      "password": null,
-      "numerosJugadores": 1,
-      "jugadores": [
-        "687f388c-f01b-41a4-b2cf-6426e9f9b733",
-        null,
-        null,
-        null
-      ]
+      "id": "3c1eaac9-7e65-40e0-a8bc-32b4c5f0bad3",
+      "nombreUsuario": "asdasdad",
+      "passwordHash": "$2b$10$kOwliuAL88oSAkbhBdzArO.0s1kejAtkMxupbwfO6Yvp3VHGLM8sC",
+      "correo": "asdasdasd@asdasdasd.com"
+    },
+    {
+      "id": "3b9e62c6-f920-43ca-bdf6-2a6e276ec66a",
+      "nombreUsuario": "asdasdadddd",
+      "passwordHash": "$2b$10$UNhZZNfAo5.EQyXOpeiNlu/eaEZTqFjlf0wxIzqZ8D.cSS/woGHWS",
+      "correo": "asdasdasd@asdaasdsdasd.com"
+    },
+    {
+      "id": "b5eca2d5-9a4d-41f3-ac10-4ec0e07bc539",
+      "nombreUsuario": "asdasdasddddd",
+      "passwordHash": "$2b$10$E7NEL9xB9YTIq0mnhctqMOfaonKc9.vq2GXWT7aW6cm2d776pwphi",
+      "correo": "asdadas@asdddddd.com"
     }
   ],
+  "jugadores": [],
+  "mesas": [],
   "partidas": []
 }
